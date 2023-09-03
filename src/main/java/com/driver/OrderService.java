@@ -11,15 +11,35 @@ public class OrderService {
     @Autowired
     OrderRepository orderRepository;
 
-
     public void addOrder(Order order){
         orderRepository.addOrder(order);
     }
-    public void addPartner(String partnerId) {
+
+    public void addPartner(String partnerId){
         orderRepository.addPartner(partnerId);
     }
 
-    public List<String> getAllOrders() {
+    public void addOrderPartnerPair(String orderId, String partnerId){
+        orderRepository.addOrderPartnerPair(orderId,partnerId);
+    }
+
+    public Order getOrderById(String orderId){
+        return orderRepository.getOrderById(orderId);
+    }
+
+    public DeliveryPartner getPartnerById(String partnerId){
+        return orderRepository.getPartnerById(partnerId);
+    }
+
+    public int getOrderCountByPartnerId(String partnerId){
+        return orderRepository.getOrderCountByPartnerId(partnerId);
+    }
+
+    public List<String> getOrdersByPartnerId(String partnerId){
+        return orderRepository.getOrdersByPartnerId(partnerId);
+    }
+
+    public List<String> getAllOrders(){
         return orderRepository.getAllOrders();
     }
 
@@ -39,9 +59,9 @@ public class OrderService {
         String HH = String.valueOf(time/60);
         String MM = String.valueOf(time%60);
 
-        if(HH.length() < 2)
+        if(HH.length()<2)
             HH = '0' + HH;
-        if(MM.length() < 2)
+        if(MM.length()<2)
             MM = '0' + MM;
 
         return HH+':'+MM;
@@ -51,27 +71,7 @@ public class OrderService {
         orderRepository.deletePartnerById(partnerId);
     }
 
-
-
-    public void addOrderPartnerPair(String orderId, String partnerId) {
-        orderRepository.addOrderPartnerPair(orderId, partnerId);
-    }
-
-    public DeliveryPartner getPartnerById(String partnerId) {
-        return orderRepository.getPartnerById(partnerId);
-    }
-
-    public Order getOrderById(String orderId) {
-        return orderRepository.getOrderById(orderId);
-    }
-
-    public Integer getOrderCountByPartnerId(String partnerId) {
-        return orderRepository.getOrderCountByPartnerId(partnerId);
-    }
-
-
-
-    public void deleteOrderById(String orderId) {
+    public void deleteOrderById(String orderId){
         orderRepository.deleteOrderById(orderId);
     }
 }
