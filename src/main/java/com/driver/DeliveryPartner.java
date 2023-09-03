@@ -5,8 +5,8 @@ public class DeliveryPartner {
     private String id;
     private int numberOfOrders;
 
-    public DeliveryPartner(){
-
+    //------------- Constructor-----------------
+    public DeliveryPartner() {
     }
 
     public DeliveryPartner(String id) {
@@ -14,6 +14,7 @@ public class DeliveryPartner {
         this.numberOfOrders = 0;
     }
 
+    //-------------- Getter & Setter -------------------
     public String getId() {
         return id;
     }
@@ -24,5 +25,9 @@ public class DeliveryPartner {
 
     public void setNumberOfOrders(Integer numberOfOrders) {
         this.numberOfOrders = numberOfOrders;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
